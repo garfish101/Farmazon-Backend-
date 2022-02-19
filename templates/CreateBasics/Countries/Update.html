@@ -1,0 +1,13 @@
+{% extends "NavigationPage.html" %}
+{% block title %}Update | Country{% endblock %}
+
+{% block content %}
+
+{%load crispy_forms_tags%}
+<form method='POST'>
+    {%csrf_token%}
+    {{form|crispy}}  
+    <button class="btn btn-warning"type='submit'>Update Country</button>
+    <a class="btn btn-warning" href="{%url 'Countries'%}">Back</a>
+</form>
+{%endblock%}

@@ -1,0 +1,60 @@
+{% extends "NavigationPage.html" %}
+{% block title %}Details | User Roles{% endblock %}
+
+{% block content %}
+
+{%load crispy_forms_tags%}
+
+<div class="row">
+<div class="col-3">
+    <a class="btn btn-warning" href="{% url 'CreateUserRole' %}">Create </a>  
+    
+</div>
+<div class="col-6">
+    <div class="container mt-5 px-2">
+    <div class="mb-2 d-flex justify-content-between align-items-center">
+        <div class="position-relative"><h1>User Roles</h1> </div>
+        <div class="px-2"> <span>
+            <i class="fa fa-angle-down"></i></span> <i class="fa fa-ellipsis-h ms-3"></i> </div>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-responsive table-borderless">
+            <thead>
+                <tr class="bg-light">
+                    
+                    <th scope="col" width="5%">role Id</th>
+                    <th scope="col" width="20%">Role</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                
+                    
+                    {%for role in RolesList%}
+                    <tr>
+                   
+                    <td scope="row">{{role.id}}</td>
+                    <td scope="row">{{role.Role}}</td>
+                    <td scope="row">          
+                    <a class="btn btn-danger" href="{% url 'DeleteUserRole' role.id%}">Delete</a>
+                    <a class="btn btn-warning" href="{% url 'UpdateUserRole' role.id %}">Update</a>
+                    </td> 
+        </td>
+                </tr>
+                    {%endfor%}
+             
+               
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+<div class="col-3">
+    
+</div>
+</div>
+
+
+
+
+{% endblock %}

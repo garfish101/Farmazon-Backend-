@@ -1,0 +1,17 @@
+{% extends "NavigationPage.html" %}
+{% block title %}Create | Country{% endblock %}
+
+{% block content %}
+
+{%load crispy_forms_tags%}
+<form method='post' enctype="multipart/form-data">
+    {%csrf_token%}
+    {{form|crispy}}  
+    <button class="btn btn-warning"type='submit'>Create Country</button>
+    <a class="btn btn-warning" href="{%url 'Countries'%}">Back</a>
+</form>
+{% if img_obj %}
+  <h3>Succesfully uploaded : {{img_obj.title}}</h3>
+  <img src="{{ img_obj.FlagPicture.url}}"  style="max-height:300px">
+{% endif %}
+{%endblock%}

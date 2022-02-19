@@ -1,0 +1,13 @@
+{% extends "NavigationPage.html" %}
+{% block title %}Update | Currency{% endblock %}
+
+{% block content %}
+
+{%load crispy_forms_tags%}
+<form method='POST'>
+    {%csrf_token%}
+    {{form|crispy}}  
+    <button class="btn btn-warning"type='submit'>Update Currency</button>
+    <a class="btn btn-warning"href="{%url 'Currency'%}">Back</a>
+</form>
+{%endblock%}

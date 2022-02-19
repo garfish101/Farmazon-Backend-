@@ -1,0 +1,13 @@
+{% extends "NavigationPage.html" %}
+{% block title %}Create | User Roles{% endblock %}
+
+{% block content %}
+
+{%load crispy_forms_tags%}
+<form method='POST'>
+    {%csrf_token%}
+    {{form|crispy}}  
+    <button class="btn btn-warning"type='submit'>Create Role</button>
+    <a class="btn btn-warning"href="{%url 'UserRoles'%}">Back</a>
+</form>
+{%endblock%}

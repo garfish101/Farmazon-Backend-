@@ -1,0 +1,64 @@
+{% extends "NavigationPage.html" %}
+{% block title %}Details | Currency{% endblock %}
+
+{% block content %}
+
+{%load crispy_forms_tags%}
+
+<div class="row">
+<div class="col-3">
+    <a class="btn btn-warning" href="{% url 'CreateCurrency' %}">Create </a>  
+    
+</div>
+<div class="col-6">
+    
+    <div class="mb-2 d-flex justify-content-between align-items-center">
+        <div class="position-relative"><h1>Currency</h1> </div>
+        <div class="px-2"> <span>
+            <i class="fa fa-angle-down"></i></span> <i class="fa fa-ellipsis-h ms-3"></i> </div>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-responsive table-borderless">
+            <thead>
+                <tr class="bg-light">
+                    <th scope="col" width="5%">Currency Id        </th>
+                    <th scope="col" width="5%">Country Id         </th>
+                    <th scope="col" width="20%">Currency Rate</th>
+                    <th scope="col" width="20%">Currency Symbol</th>
+                    <th></th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                
+                    
+                    {%for Currency in CurrencyList%}
+                    <tr class="fs-6">
+                    <td scope="row" class="fs-5">{{Currency.id}}</td>    
+                    <td scope="row" class="fs-5">{{Currency.CountryId}}</td>
+                    <td scope="row" class="fs-5">{{Currency.RateToUsd}}</td>
+                    <td scope="row" class="fs-5">{{Currency.CurrencySymbol}}</td>
+                    
+                    <td scope="row">      
+                    <a class="btn btn-danger" href="{% url 'DeleteCurrency' Currency.id%}">Delete</a>
+                    <a class="btn btn-warning" href="{% url 'UpdateCurrency' Currency.id %}">Update</a>
+                    </td> 
+        </td>
+                </tr>
+                    {%endfor%}
+             
+               
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+<div class="col-3">
+    
+</div>
+</div>
+
+
+
+
+{% endblock %}

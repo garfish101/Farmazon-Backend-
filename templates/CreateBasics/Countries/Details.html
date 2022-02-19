@@ -1,0 +1,63 @@
+{% extends "NavigationPage.html" %}
+{% block title %}Details | Country{% endblock %}
+
+{% block content %}
+
+{%load crispy_forms_tags%}
+
+<div class="row">
+<div class="col-3">
+    <a class="btn btn-warning" href="{% url 'CreateCountry' %}">Create </a>  
+    
+</div>
+<div class="col-6">
+    
+    <div class="mb-2 d-flex justify-content-between align-items-center">
+        <div class="position-relative"><h1>Country</h1> </div>
+        <div class="px-2"> <span>
+            <i class="fa fa-angle-down"></i></span> <i class="fa fa-ellipsis-h ms-3"></i> </div>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-responsive table-borderless">
+            <thead>
+                <tr class="bg-light">
+                    
+                    <th scope="col" width="5%">Country Id</th>
+                    <th scope="col" width="20%">Country name</th>
+                    <th scope="col" width="20%">Country flag</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                
+                    
+                    {%for country in CountryList%}
+                    <tr class="bg-orange">
+                   
+                    <td scope="row" class="fs-3">{{country.id}}</td>
+                    <td scope="row" class="fs-3">{{country.Name}}</td>
+                    <td scope="row"><img class="img-thumbnail"   src="{{country.FlagPicture.url}}" ></td>
+                    
+                    <td scope="row">      
+                    <a class="btn btn-danger" href="{% url 'DeleteCountry' country.id%}">Delete</a>
+                    <a class="btn btn-warning" href="{% url 'UpdateCountry' country.id %}">Update</a>
+                    </td> 
+        </td>
+                </tr>
+                    {%endfor%}
+             
+               
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+<div class="col-3">
+    
+</div>
+</div>
+
+
+
+
+{% endblock %}
